@@ -32,7 +32,7 @@ public class AppTest {
         t2 = new Trader("t2", sm);
         t3 = new Trader("t3", sm);
 
-// Vinculando al accionista con la acción que le interesa observar --------        
+// Vinculando al accionista con la accion que le interesa observar --------        
 
         sm.register(t1, s1);
         sm.register(t1, s2);
@@ -50,9 +50,9 @@ public class AppTest {
     @Test public void testTrading1() {
         String logTrade1 ="t1:The latest trade is Trader:t1 buy $1.0 Stock: MSFT\n";
         String logTrade2 ="t2:The latest trade is Trader:t1 buy $1.0 Stock: MSFT";
-
-        boolean condicion = (logTrade1+logTrade2).equals(sm.trade(t1,s1, "buy",1.00));
-
+        
+        boolean condicion = (logTrade1+logTrade2).equals(sm.trade(t1,s1,"buy",1.00));
+        System.out.println(sm.trade(t1, s1, "buy", 1.00));
         assertTrue(condicion);
     }
 
@@ -80,7 +80,7 @@ public class AppTest {
 
     @Test public void testTrading4() {
         String logTrade1 ="t2:The latest trade is Trader:t3 buy $5.0 Stock: GOOG\n";
-        String logTrade2 ="t3:The latest trade is Trader:t3 buy $5.0 Stock: GOOG"
+        String logTrade2 ="t3:The latest trade is Trader:t3 buy $5.0 Stock: GOOG";
 
         boolean condicion = (logTrade1+logTrade2).equals(sm.trade(t3,s4, "buy",5.00));
 
