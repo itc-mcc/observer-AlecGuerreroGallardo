@@ -36,11 +36,13 @@ public class Stock implements Subject {
 	}
 
 	@Override
-	public String notifyObservers(Trader trader,String tipo_transaccion, Double precio) {
+	public String notifyObservers(Observer trader,String tipo_transaccion, Double precio) {
 		String transaccionLog="";
-		for (Observer obs : obs) {
-			transaccionLog = transaccionLog + obs.getName() + ":The latest trade is Trader:"+ trader.getName()+" "+tipo_transaccion
-					+" $"+precio+ " Stock: "+ this.tipo+"\n";
+		if (trader instanceof Trader) {	
+			for (Observer obs : obs) {
+				transaccionLog = transaccionLog + obs.getName() + ":The latest trade is Trader:"+ trader.getName()+" "+tipo_transaccion
+						+" $"+precio+ " Stock: "+ this.tipo+"\n";
+			}
 		}
 		transaccionLog = transaccionLog.substring(0,transaccionLog.length()- 1); //eliminar ultimo caracter
 		return transaccionLog;
